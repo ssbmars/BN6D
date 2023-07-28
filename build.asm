@@ -2,9 +2,9 @@ VERBOSE equ 0
 
 // GameName gets defined as a command line argument when building
 
-ROMfldr equ "rom\\"
-OUTfldr equ "out\\"
-ASMfldr equ "asm\\"
+ROMfldr equ "rom/"
+OUTfldr equ "out/"
+ASMfldr equ "asm/"
 
 INPUT_ROM	equ ROMfldr + GameName + ".gba"
 OUTPUT_ROM	equ OUTfldr + "output_" + GameName + ".gba"
