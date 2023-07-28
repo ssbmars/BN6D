@@ -1,0 +1,25 @@
+BINGUS WISHLIST
+(these are not promises)
+
+BN6 (and EXE6)
+
+fix elemtrap softlock and its other glitches
+
+slashglitch might have to be patched or limited
+
+
+
+EXE6
+
+set AirSpin's HP to 400
+
+fix tornado glitch
+
+fix busterbug + exhausted glitch that allows busterbug procs to still hit with atk+ boosts
+
+fix shy bees (occurs if any trap is equipped)
+
+fix BadMedicine glitch
+
+fix the overcharge glitch, including its effects on modcards such as extending the invis time from Shadow
+
