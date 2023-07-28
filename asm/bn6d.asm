@@ -52,7 +52,7 @@
 	mov r0,8h
 
 
-// fix the glitch that prevents decrossing
+// fix the glitch that allows decrossing
 .org DecrossChecker
 	nop
 
