@@ -4,7 +4,7 @@
 	//.include ASMfldr+ "debugging.asm"
 .endif
 
-//	run all other asm files here 
+//	run all other asm files here
 //.include ASMfldr+ "file.asm"
 
 
@@ -42,7 +42,7 @@
 
 // make it fade to a black screen when starting pvp
 
-.org PVPFade	// pvp 
+.org PVPFade	// pvp
 	mov r0,0Ch
 .org BossFade	//pve
 	mov r0,0Ch
@@ -60,7 +60,11 @@
 .org DisableTFC
 	nop
 
+.org AreaGrabLastColumnBeq
+	nop
 
+.org PanelGrabLastColumnBeq
+	nop
 
 // windrack: delay the movement of the invisible gusts so that players will get moved by the gusts regardless of their entity update order if they're hit point blank while they are being protected by a barrier
 
@@ -75,9 +79,9 @@
 // endrack
 
 // BDT and Thunder: when the targeted character is on the same panel as the thunder ball, make the ball move in a relative "forward" direction instead of moving in a hardcoded direction that ignores which side spawned the thunder
-	
+
 	.org ThunderHook
-	// the skipped bytes are a push r14 and an important routine, 
+	// the skipped bytes are a push r14 and an important routine,
 	// easier to leave those intact
 	.skip 0x2*3
 	ldr		r2,=ThunderMove|1
@@ -111,7 +115,7 @@
 		strb	r1,[r0]
 		mov		r1,10h
 		strb	r1,[r0,4h]
-	
+
 		ldr		r0,=DarkBoot1Return
 		bx		r0
 		poool
@@ -125,7 +129,7 @@
 		ldr		r1,=0x0802F530|1
 		mov		r14,r15
 		bx		r1
-	
+
 		// now for the custom stuff
 		ldr		r0,=0x04000000
 		mov		r1,40h
@@ -135,14 +139,14 @@
 		strb	r1,[r0]
 		mov		r1,10h
 		strb	r1,[r0,4h]
-		
+
 		// apply it again later
 		ldr		r0,=0x02009740
 		mov		r1,0FFh
 		strb	r1,[r0]
 		mov		r1,10h
 		strb	r1,[r0,4h]
-	
+
 		pop		r15
 		poool
 .endif
@@ -315,4 +319,3 @@ WindRWaitStep:
 
 sussy1:
 ;.import "art/sus1.bnsa"
-

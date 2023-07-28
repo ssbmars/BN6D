@@ -15,6 +15,8 @@
 
 .definelabel DecrossChecker, 0x081D78E2
 .definelabel DisableTFC, 0x08012E40
+.definelabel AreaGrabLastColumnBeq, 0x080c7d66
+.definelabel PanelGrabLastColumnBeq, 0x080ce3da
 
 .definelabel PVPFade,	0x0812D56E
 .definelabel PVPUnfade,	0x080E19DC
