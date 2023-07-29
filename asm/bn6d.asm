@@ -231,8 +231,96 @@ PasteCodeChunk1:
 
 
 // the entire function is taken directly from the game and pasted here so it can be modified more freely
-ThunderMove:	:: BuffDeathThunder equ 1
+ThunderMove:
+BuffDeathThunder equ 1	// 0=go off field | 1=stay on field
+FUNNYTHUNDER	equ 1	// 1=BDT can go diagonal and is harder to move out of bounds
+
 	symoff
+	.if FUNNYTHUNDER	
+	// r0 has target x
+	// r1 has target y
+	// return address is already pushed to stack
+		@@xpos	equ [r5,12h]
+		@@ypos	equ [r5,13h]
+		@@level	equ r2,[r5,4h]
+		@@xdir	equ r0,[r5,40h]
+		@@ydir	equ r0,[r5,44h]
+	cmp		r0,0h
+	bne		@@targetfound
+	ldrb	r3,@@ypos
+	mov		r1,r3
+	ldrb	r2,@@xpos
+	mov		r0,r2
+	@@targetfound:
+	push	r0
+	ldrb	r3,@@ypos	// y of self
+	cmp		r1,r3
+	beq		@@wipeypos
+	b		@@decidey
+	@@wipeypos:
+	mov		r0,0h
+	str		@@ydir
+	b		@@gotoxcheck
+	@@decidey:
+	ldrb	r2,@@ypos
+	cmp		r1,r2
+	blt		@@yflip
+	mov		r0,1h
+	b		@@GoVertical
+	@@yflip:
+	mov		r0,0h
+	sub		r0,1h
+	@@GoVertical:
+	ldr		r1,=6666h	// normal vertical speed
+	ldrb	@@level
+	cmp		r2,2h
+	bne		@@LVcheck3
+	ldr		r1,=999Ah	// faster vertical speed
+	@@LVcheck3:
+	mul		r0,r1
+	str		@@ydir
+	@@gotoxcheck:
+	pop		r0
+	ldrb	r2,@@xpos	// x of self
+	cmp		r0,r2
+	beq		@@wipexpos
+	b		@@decidex
+	@@wipexpos:
+	mov		r0,0h
+	str		@@xdir
+	b		@@wrapup
+	@@decidex:
+	cmp		r0,r2
+	blt		@@xflip
+	@@difx:
+	mov		r0,1h
+	b		@@GoHorizontal
+	@@xflip:
+	mov		r0,0h
+	sub		r0,1h
+	b		@@GoHorizontal
+	@@GoHorizontal:
+	ldr		r1,=0AAABh	// normal horizontal speed
+	ldrb	@@level
+	cmp		r2,2h
+	bne		@@LVcheck1
+	ldr		r1,=10000h	// faster horizontal speed
+	@@LVcheck1:
+	mul		r0,r1
+	str		@@xdir
+	@@wrapup:
+	mov		r0,3Ch		// normal move time (yes they hardcoded this info)
+	ldrb	@@level
+	cmp		r2,2h
+	bne		@@LVcheck2
+	mov		r0,28h		// faster move time
+	@@LVcheck2:
+	strh	r0,[r5,20h]
+	pop		r15
+	poool
+
+	.else
+
 	// r0 has target x
 	// r1 has target y
 	// return address is already pushed to stack
@@ -322,7 +410,6 @@ ThunderMove:	:: BuffDeathThunder equ 1
 	@@LVcheck2:
 	strh	r0,[r5,20h]
 	pop		r15
-	.sym on
 
 // this routine will allow us to flip the movement direction if it was used by a player on the right side of the field
 tmGetFacing:
@@ -334,7 +421,8 @@ tmGetFacing:
 	neg		r0,r0
 	mov		r15,r14
 	poool
-
+.endif
+.sym on
 
 .align 0x4
 WindrackJumpTable:
