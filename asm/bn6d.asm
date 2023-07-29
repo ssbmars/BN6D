@@ -58,7 +58,7 @@
 
 // disable TFC
 .org DisableTFC
-	nop
+	bl		TFCstopper
 
 .org AreaGrabLastColumnBeq
 	nop
@@ -88,9 +88,53 @@
 	bx		r2
 	poool
 	nop
+	freedspace1:
 // thunder doneder
 
 
+
+//  ============  //	Freed up space (from repointing existing functions)
+// this space is from the Thunder code
+.org freedspace1
+	.sym off :: .area 0x080C95E6 - 0x080C957C, 0x0	:: .sym on
+	nop
+
+	TFCstopper:
+	push	r14
+
+	ldr r1,=2036840h
+	ldrb	r0,[r1]
+	cmp		r0,0xB
+	blt		@@continue
+	ldrb	r0,[r1,0x1]
+	cmp		r0,0x0C
+	beq		@@allowinput
+	ldrb	r0,[r1,0x7]
+	cmp		r0,0x6
+	blt		@@continue
+	add		r0,0x1
+	cmp		r0,0x0A
+	beq		@@allowinput
+	strb	r0,[r1,0x7]
+
+	@@continue:
+	mov		r0,0x0
+	tst		r0,r0
+	pop		r15
+	// to prevent TFC, return false on a bne check
+
+	@@allowinput:
+	mov		r1,r10
+	ldr		r1,[r1,0x18]
+	ldrh	r0,[r1,0x32]
+	mov		r1,0x4
+	and		r0,r1
+	pop		r15
+	poool
+
+
+	.sym off :: .endarea :: .sym on
+// end of freedspace1
 
 
 // End of ROM

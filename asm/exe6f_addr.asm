@@ -14,7 +14,7 @@
 .definelabel screenio3, 0x0803E318
 
 .definelabel DecrossChecker, 0x081D78BA
-.definelabel DisableTFC, 0x08013440
+.definelabel DisableTFC, 0x0801343C
 
 .definelabel PVPFade,	0x0813418E
 .definelabel PVPUnfade,	0x080E4634

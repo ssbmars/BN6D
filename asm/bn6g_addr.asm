@@ -14,7 +14,7 @@
 .definelabel screenio3, 0x0803D27C
 
 .definelabel DecrossChecker, 0x081D78E2
-.definelabel DisableTFC, 0x08012E40
+.definelabel DisableTFC, 0x08012E3C
 .definelabel AreaGrabLastColumnBeq, 0x080c7d66
 .definelabel PanelGrabLastColumnBeq, 0x080ce3da
 
