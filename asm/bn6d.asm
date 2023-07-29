@@ -60,11 +60,9 @@
 .org DisableTFC
 	bl		TFCstopper
 
-.org AreaGrabLastColumnBeq
-	nop
-
-.org PanelGrabLastColumnBeq
-	nop
+.org IsPanelGrabbable
+	mov r0, 1h
+	mov pc, lr
 
 .org SetGrabTimerLong
 	mov pc, lr
@@ -242,7 +240,7 @@ BuffDeathThunder equ 1	// 0=go off field | 1=stay on field
 FUNNYTHUNDER	equ 1	// 1=BDT can go diagonal and is harder to move out of bounds
 
 	symoff
-	.if FUNNYTHUNDER	
+	.if FUNNYTHUNDER
 	// r0 has target x
 	// r1 has target y
 	// return address is already pushed to stack

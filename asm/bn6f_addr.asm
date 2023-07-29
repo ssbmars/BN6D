@@ -15,8 +15,7 @@
 
 .definelabel DecrossChecker, 0x081D78E6
 .definelabel DisableTFC, 0x08012E3C
-.definelabel AreaGrabLastColumnBeq, 0x080c64f6
-.definelabel PanelGrabLastColumnBeq, 0x080ccb6a
+.definelabel IsPanelGrabbable, 0x0800d668
 .definelabel SetGrabTimerLong, 0x0800cc36
 .definelabel SetGrabTimerShort, 0x0800cc44
 

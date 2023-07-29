@@ -3,7 +3,7 @@
 *.exe
 *.dll
 *.gba
-*.sav
+*.sa[0-9v]
 *.sym
 *.nlz
 *.lnk
