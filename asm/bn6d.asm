@@ -66,6 +66,12 @@
 .org PanelGrabLastColumnBeq
 	nop
 
+.org SetGrabTimerLong
+	mov pc, lr
+
+.org SetGrabTimerShort
+	mov pc, lr
+
 // windrack: delay the movement of the invisible gusts so that players will get moved by the gusts regardless of their entity update order if they're hit point blank while they are being protected by a barrier
 
 	// point to a new table of routines for windrack's logic

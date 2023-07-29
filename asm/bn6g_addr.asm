@@ -17,6 +17,8 @@
 .definelabel DisableTFC, 0x08012E3C
 .definelabel AreaGrabLastColumnBeq, 0x080c7d66
 .definelabel PanelGrabLastColumnBeq, 0x080ce3da
+.definelabel SetGrabTimerLong, 0x0800cc36
+.definelabel SetGrabTimerShort, 0x0800cc44
 
 .definelabel PVPFade,	0x0812D56E
 .definelabel PVPUnfade,	0x080E19DC
