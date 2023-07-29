@@ -7,5 +7,5 @@ This is designed to be used with the Tango netplay solution over at <https://git
 ## Features
 Features from Bingus that don't conflict with any Daniel changes are included because I copy pasted the BBN6 folder to make this.  
 Decrossing from elemental weakness is removed.  
-Time Freeze Counters are disabled.
-Back row panels can be stolen like in BNs 1-3 (thanks weenie).
+Time Freeze Counters are disabled.  
+Back row panels can be stolen like in BNs 1-3 (thanks weenie).  
