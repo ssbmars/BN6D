@@ -446,6 +446,28 @@ WindRWaitStep:
 	pop		r15
 
 
+
+// smile :D
+.if GameName == "bn6f"
+	.org 0x086E7DCC
+	.import "smiles/FalzarSmiles.bin"
+	.org 0x086E890C
+	.import "smiles/SpoutGrey.img.bin"
+	.import "smiles/ThankGrey.img.bin"
+	.import "smiles/TenguGrey.img.bin"
+	.import "smiles/GroundGrey.img.bin"
+	.import "smiles/DustGrey.img.bin"
+.elseif GameName == "bn6g"
+	.org 0x086E5D50
+	.import "smiles/GregarSmiles.bin"
+	.org 0x086E6890
+	.import "smiles/HeatGrey.img.bin"
+	.import "smiles/ElecGrey.img.bin"
+	.import "smiles/SlashGrey.img.bin"
+	.import "smiles/EraseGrey.img.bin"
+	.import "smiles/ChargeGrey.img.bin"
+.endif
+
 // Repoint megaman sprites
 .org 0x08031CEC
 ;	.dw sussy1
