@@ -18,6 +18,7 @@
 .definelabel IsPanelGrabbable, 0x0800d668
 .definelabel SetGrabTimerLong, 0x0800cc36
 .definelabel SetGrabTimerShort, 0x0800cc44
+.definelabel AreaGrabHook,	0x0800D5CA
 
 .definelabel PVPFade,	0x0812B792
 .definelabel PVPUnfade,	0x080E06A0

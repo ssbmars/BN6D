@@ -59,16 +59,21 @@
 // disable TFC
 .org DisableTFC
 	bl		TFCstopper
-
-.org IsPanelGrabbable
-	mov r0, 1h
-	mov pc, lr
-
+/*
 .org SetGrabTimerLong
 	mov pc, lr
 
 .org SetGrabTimerShort
 	mov pc, lr
+*/
+
+.org IsPanelGrabbable
+	mov r0, 1h
+	mov pc, lr
+
+.org AreaGrabHook
+	bl		AreaGrabFix
+
 
 // windrack: delay the movement of the invisible gusts so that players will get moved by the gusts regardless of their entity update order if they're hit point blank while they are being protected by a barrier
 
@@ -135,6 +140,20 @@
 	and		r0,r1
 	pop		r15
 	poool
+
+
+	AreaGrabFix:
+	sub		r0,0x1
+	cmp		r0,0x6
+	sub		r1,0x1
+	cmp		r1,0x3
+	bcs		@@jump
+	mov		r0,0x1
+	mov		r15,r14
+	@@jump:
+	mov		r0,0x0
+	mov		r15,r14
+
 
 
 	.sym off :: .endarea :: .sym on
